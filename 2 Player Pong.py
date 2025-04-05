@@ -31,8 +31,8 @@ ball.shape("square")
 ball.color("white") 
 ball.penup() 
 ball.goto(0, 0) 
-ball.dx = 0.04 
-ball.dy = -0.04 
+ball.dx = 0.03
+ball.dy = -0.03
 
 pen = turtle.Turtle() 
 pen.speed(0) 
@@ -84,14 +84,14 @@ while True:
 
     if ball.xcor() > 390:
         ball.goto(0, 0) 
-        ball.dx *= -1 
+        ball.dx *= -1
         scoreA += 1
         pen.clear() 
         pen.write("Player A: {}  Player B: {}".format(scoreA, scoreB), align="center", font=("Courier", 24, "normal")) 
     
     if ball.xcor() < -390:
         ball.goto(0, 0) 
-        ball.dx *= -1 
+        ball.dx *= -1
         scoreB += 1
         pen.clear() 
         pen.write("Player A: {}  Player B: {}".format(scoreA, scoreB), align="center", font=("Courier", 24, "normal")) 
@@ -99,7 +99,27 @@ while True:
     if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddleB.ycor() + 35 and ball.ycor() > paddleB.ycor() - 35):
         ball.setx(340)
         ball.dx *= -1
+
+        if ball.dx < 0:
+            ball.dx -= 0.005
+        else:
+            ball.dx += 0.005
+
+        if ball.dy < 0:
+            ball.dy -= 0.005
+        else:
+            ball.dy += 0.005
     
     if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddleA.ycor() + 35 and ball.ycor() > paddleA.ycor() - 35):
         ball.setx(-340)
         ball.dx *= -1
+
+        if ball.dx < 0:
+            ball.dx -= 0.005
+        else:
+            ball.dx += 0.005
+
+        if ball.dy < 0:
+            ball.dy -= 0.005
+        else:
+            ball.dy += 0.005
